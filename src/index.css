@@ -1,0 +1,122 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Global styles */
+* {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  scrollbar-width: none;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  text-align: left;
+}
+
+/* Classes */
+.container {
+  background: black;
+  color: limegreen;
+  overflow: hidden;
+}
+
+.nav-bar {
+  position: fixed;
+  display: flex;
+  top: 0;
+  width: 100%;
+  background: black;
+  padding: 1rem;
+  justify-content: center;
+  gap: 2em;
+}
+.nav-button {
+  background: transparent;
+  color: limegreen;
+  min-width: 10rem;
+  border: 2px solid limegreen;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.nav-button.active {
+  scale: 0.9;
+}
+.nav-button:hover, .nav-button.active {
+  background: limegreen;
+  color: black;
+}
+
+.scroll-indicator {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  gap: 10px;
+}
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+  scale: 0.85;
+  transition: background 0.3s;
+  animation: flicker 0.5s infinite alternate;
+}
+.indicator-dot.active-dot {
+  background: limegreen;
+  scale: 1.0;
+}
+
+.content {
+  padding: 0 2em;
+}
+.home, .about, .projects, .contact {
+  min-height: 100vh;
+  padding-top: 4em;
+  line-height: 1.3em;
+}
+
+/* Animations */
+.glitch {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+.glitch:before, .glitch:after {
+  display: block;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+.glitch:before {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #0ff;
+  z-index: -1;
+}
+.glitch:after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #f0f;
+  z-index: -2;
+}
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes flicker {
+  from { opacity: 0.8; }
+  to { opacity: 1;}
+}
